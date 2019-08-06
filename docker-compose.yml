@@ -1,13 +1,10 @@
-version: "3.2"
+version: '3'
+
 services:
-  nextjs:
+  next:
     build: ./next
-    container_name: nextjs
+    volumes:
+      - ./next:/usr/src/app
+      - /usr/src/app/node_modules
     ports:
       - 3000:3000
-      - 49153:49153
-    volumes:
-      - next/:/next/
-    command: npm run dev
-volumes:
-  next:

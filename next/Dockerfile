@@ -1,14 +1,15 @@
 FROM node:10
 
-# Setting working directory.
-WORKDIR /next
+#Setup working directory
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-# Installing dependencies
-COPY package.json /next/
-RUN npm install
+#Install dependencies
+COPY package.json package-lock.json ./
+RUN yarn install
 
-# Copying source files
-COPY . /next/
+#Copy source files
+COPY . .
 
-# Building app
-RUN npm run build
+#Running the app
+CMD ["yarn", "dev"]
