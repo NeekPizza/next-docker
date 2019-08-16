@@ -1,6 +1,14 @@
 version: '3'
 
 services:
+
+  python:
+    build: ./python
+    volumes:
+      - ./python:/src
+    ports:
+    - 5000:5000
+
   next:
     build: ./next
     volumes:
@@ -8,3 +16,4 @@ services:
       - /usr/src/app/node_modules
     ports:
       - 3000:3000
+ 
